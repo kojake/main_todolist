@@ -52,6 +52,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="segment" destination="xGE-WZ-1lf" id="4hF-3R-1Yf"/>
+                        <outlet property="tableview" destination="Vu8-Z8-lAT" id="93R-jV-mK3"/>
                         <outlet property="view" destination="Vu8-Z8-lAT" id="TqH-S7-H4x"/>
                     </connections>
                 </viewController>
@@ -62,18 +63,60 @@
         <!--ショートカットを増やす-->
         <scene sceneID="KZa-U5-q3X">
             <objects>
-                <viewController id="M9g-S4-4p0" sceneMemberID="viewController">
+                <viewController id="M9g-S4-4p0" customClass="add_shortcut_ViewController" customModule="main_todo_list" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kTh-SO-zFb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e0j-cJ-HMj">
+                                <rect key="frame" x="20" y="308" width="374" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="タップして打つ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qN-nY-5j6">
+                                <rect key="frame" x="159" y="350" width="235" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="31"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shift.fill" catalog="system" highlightedImage="shift.fill" translatesAutoresizingMaskIntoConstraints="NO" id="oPL-Wg-89d">
+                                <rect key="frame" x="55" y="351" width="96" height="102"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQJ-Fi-UJL">
+                                <rect key="frame" x="55" y="519" width="305" height="101"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="増やす">
+                                    <fontDescription key="titleFontDescription" type="system" weight="black" pointSize="42"/>
+                                    <color key="baseBackgroundColor" systemColor="systemTealColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="add_button:" destination="AMq-1q-umH" eventType="touchUpInside" id="Kxo-ZT-mMK"/>
+                                    <action selector="add_button:" destination="M9g-S4-4p0" eventType="touchUpInside" id="faS-K4-01X"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ショートカットを増やす" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8B-ts-7ZH">
+                                <rect key="frame" x="20" y="48" width="415" height="157"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="AHY-ih-046"/>
                         <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="ショートカットを増やす" image="minus.plus.batteryblock" catalog="system" selectedImage="minus.plus.batteryblock.fill" id="U9e-OR-M1V"/>
+                    <connections>
+                        <outlet property="short_cut_text_filed" destination="e0j-cJ-HMj" id="gs4-dG-DV0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QFs-HJ-Kpl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1668" y="685"/>
+            <point key="canvasLocation" x="1666.6666666666667" y="684.375"/>
         </scene>
         <!--予定を増やす-->
         <scene sceneID="TPm-C1-3rg">

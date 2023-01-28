@@ -14,14 +14,21 @@ class ViewController: UIViewController,UITableViewDataSource{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //予定を読み込む
-        todo_list = UserDefaults.standard.object(forKey: "todo_list_key") as! [String]
+        
+//        //予定を読み込むr
+        if let todo_list_obj = UserDefaults.standard.mutableSetValue(forKey: "todo_list_key") as? [String] {
+            todo_list = todo_list_obj
+            
+        } else {
+            todo_list = [String]()
+        }
         
         //ショートカットを読み込む
         segment.removeAllSegments()
         for (index, name) in segmentnames.enumerated() {
             segment.insertSegment(withTitle: name, at: index, animated: false)
         }
+        
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

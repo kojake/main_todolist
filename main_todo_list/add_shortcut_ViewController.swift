@@ -1,14 +1,15 @@
 //
-//  add_event_ViewController.swift
+//  add_shortcut_ViewController.swift
 //  main_todo_list
 //
-//  Created by kaito on 2023/01/21.
+//  Created by kaito on 2023/01/28.
 //
 
 import UIKit
 
-class add_event_ViewController: UIViewController {
-    @IBOutlet weak var event_textfiled: UITextField!
+class add_shortcut_ViewController: UIViewController {
+    @IBOutlet weak var short_cut_text_filed: UITextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,21 +25,17 @@ class add_event_ViewController: UIViewController {
         //閉じるボタン
         let commitButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.commitButtonTappend))
         toolBar.items = [spacer, commitButton]
-        event_textfiled.inputAccessoryView = toolBar
+        short_cut_text_filed.inputAccessoryView = toolBar
     }
     
-   
-    
-    //増やすボタンが押されたら
     @IBAction func add_button(_ sender: Any) {
-        let add_event = String(event_textfiled.text!)
-        todo_list.append(add_event)
-        UserDefaults.standard.set(todo_list, forKey: "todo_list_key")
-        UserDefaults.standard.synchronize()
-        print("ok")
+        let add_short_cut = String(short_cut_text_filed.text!)
+        segmentnames.append(add_short_cut)
+//        UserDefaults.standard.set(add_short_cut, forKey: "segment_key")
+
         
         //追加されたアラートを表示する
-        let alert = UIAlertController(title: "追加", message: ("入力された" + "[" + add_event + "]" + "は追加されました"), preferredStyle: .alert)
+        let alert = UIAlertController(title: "追加", message: ("入力された" + "[" + add_short_cut + "]" + "は追加されました"), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
