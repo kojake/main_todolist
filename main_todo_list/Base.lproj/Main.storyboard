@@ -78,7 +78,7 @@
         <!--予定を増やす-->
         <scene sceneID="TPm-C1-3rg">
             <objects>
-                <viewController id="AMq-1q-umH" customClass="add_event_ViewController" sceneMemberID="viewController">
+                <viewController id="AMq-1q-umH" customClass="add_event_ViewController" customModule="main_todo_list" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3R7-hI-QbT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -125,7 +125,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="予定を増やす" image="plus.circle" catalog="system" selectedImage="plus.circle.fill" id="vDa-4x-FIn"/>
                     <connections>
-                        <outlet property="event_textfiled" destination="Hzn-NK-dYH" id="ybZ-JY-Zi6"/>
+                        <outlet property="event_textfiled" destination="Hzn-NK-dYH" id="RtO-dp-8HA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DNn-BN-OqZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

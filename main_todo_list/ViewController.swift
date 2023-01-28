@@ -14,8 +14,8 @@ class ViewController: UIViewController,UITableViewDataSource{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //tabbar
-        
+        //予定を読み込む
+        todo_list = UserDefaults.standard.object(forKey: "todo_list_key") as! [String]
         
         //ショートカットを読み込む
         segment.removeAllSegments()

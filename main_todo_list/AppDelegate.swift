@@ -7,7 +7,7 @@
 
 import UIKit
 
-var todo_list = ["1","2"]
+var todo_list = [String]()
 
 var segmentnames = ["1","2"]
 
