@@ -15,13 +15,18 @@ class ViewController: UIViewController,UITableViewDataSource{
         super.viewDidLoad()
         
         //予定を読み込む
-        todo_list = UserDefaults.standard.object(forKey: "todo_list_key") as! [String]
-        
+        if let todo_list_obj = UserDefaults.standard.object(forKey: "todo_list_key") as? [String] {
+            todo_list = todo_list_obj
+        } else {
+            todo_list = [String]()
+        }
+
         //ショートカットを読み込む
         segment.removeAllSegments()
         for (index, name) in segmentnames.enumerated() {
             segment.insertSegment(withTitle: name, at: index, animated: false)
         }
+        tableview.reloadData()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,12 +41,8 @@ class ViewController: UIViewController,UITableViewDataSource{
         let TodoCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         TodoCell.textLabel?.text = todo_list[indexPath.row]
         
-        //更新
-        let newIndex = todo_list.count
-        tableView.insertRows(at: [IndexPath(row: newIndex, section: 0)], with: .top)
         
         return TodoCell
     }
     
 }
-
