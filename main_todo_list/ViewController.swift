@@ -20,8 +20,14 @@ class ViewController: UIViewController,UITableViewDataSource{
         } else {
             todo_list = [String]()
         }
-
+        
         //ショートカットを読み込む
+        if let segmentnames_obj = UserDefaults.standard.object(forKey: "segment_key") as? [String] {
+            segmentnames = segmentnames_obj
+        } else {
+            segmentnames = [String]()
+        }
+        
         segment.removeAllSegments()
         for (index, name) in segmentnames.enumerated() {
             segment.insertSegment(withTitle: name, at: index, animated: false)

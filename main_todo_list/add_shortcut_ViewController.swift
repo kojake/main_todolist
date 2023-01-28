@@ -31,8 +31,9 @@ class add_shortcut_ViewController: UIViewController {
     @IBAction func add_button(_ sender: Any) {
         let add_short_cut = String(short_cut_text_filed.text!)
         segmentnames.append(add_short_cut)
-//        UserDefaults.standard.set(add_short_cut, forKey: "segment_key")
-
+        UserDefaults.standard.set(add_short_cut, forKey: "segment_key")
+        UserDefaults.standard.synchronize()
+        print("保存が成功しました。")
         
         //追加されたアラートを表示する
         let alert = UIAlertController(title: "追加", message: ("入力された" + "[" + add_short_cut + "]" + "は追加されました"), preferredStyle: .alert)
