@@ -9,6 +9,8 @@ import UIKit
 
 var todo_list = ["1","2"]
 
+var segmentnames = ["1","2"]
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

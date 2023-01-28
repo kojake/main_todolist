@@ -13,6 +13,15 @@ class ViewController: UIViewController,UITableViewDataSource{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //tabbar
+        
+        
+        //ショートカットを読み込む
+        segment.removeAllSegments()
+        for (index, name) in segmentnames.enumerated() {
+            segment.insertSegment(withTitle: name, at: index, animated: false)
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -33,5 +42,6 @@ class ViewController: UIViewController,UITableViewDataSource{
         
         return TodoCell
     }
+    
 }
 

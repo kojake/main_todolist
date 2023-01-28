@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		97CCD4B3297BFD390025FD37 /* add_event_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CCD4B2297BFD390025FD37 /* add_event_ViewController.swift */; };
 		97E28ED8297BC89200704B28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E28ED7297BC89200704B28 /* AppDelegate.swift */; };
 		97E28EDA297BC89200704B28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E28ED9297BC89200704B28 /* SceneDelegate.swift */; };
 		97E28EDC297BC89200704B28 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E28EDB297BC89200704B28 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		97CCD4B2297BFD390025FD37 /* add_event_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = add_event_ViewController.swift; sourceTree = "<group>"; };
 		97E28ED4297BC89200704B28 /* main_todo_list.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = main_todo_list.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97E28ED7297BC89200704B28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97E28ED9297BC89200704B28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				97E28ED7297BC89200704B28 /* AppDelegate.swift */,
+				97CCD4B2297BFD390025FD37 /* add_event_ViewController.swift */,
 				97E28ED9297BC89200704B28 /* SceneDelegate.swift */,
 				97E28EDB297BC89200704B28 /* ViewController.swift */,
 				97E28EDD297BC89200704B28 /* Main.storyboard */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97E28EDC297BC89200704B28 /* ViewController.swift in Sources */,
+				97CCD4B3297BFD390025FD37 /* add_event_ViewController.swift in Sources */,
 				97E28ED8297BC89200704B28 /* AppDelegate.swift in Sources */,
 				97E28EDA297BC89200704B28 /* SceneDelegate.swift in Sources */,
 			);
