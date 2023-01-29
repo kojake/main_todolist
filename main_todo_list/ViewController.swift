@@ -24,17 +24,16 @@ class ViewController: UIViewController,UITableViewDataSource{
         //ショートカットを読み込む
         if let segmentnames_obj = UserDefaults.standard.object(forKey: "segment_key") as? [String] {
             segmentnames = segmentnames_obj
+            segment.removeAllSegments()
+            for (index, name) in segmentnames.enumerated() {
+                segment.insertSegment(withTitle: name, at: index, animated: false)
+            }
+            tableview.reloadData()
         } else {
             segmentnames = [String]()
         }
-        
-        segment.removeAllSegments()
-        for (index, name) in segmentnames.enumerated() {
-            segment.insertSegment(withTitle: name, at: index, animated: false)
-        }
-        tableview.reloadData()
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todo_list.count
     }
@@ -51,4 +50,12 @@ class ViewController: UIViewController,UITableViewDataSource{
         return TodoCell
     }
     
+    //セルの消去
+    
+    @IBAction func event_trash_button(_ sender: Any) {
+        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            todo_list.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .top)
+        }
+    }
 }
