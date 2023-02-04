@@ -8,8 +8,8 @@
 import UIKit
 
 var todo_list = [String]()
-
 var segmentnames = [""]
+var todo_check = [Bool]()
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

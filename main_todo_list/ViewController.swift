@@ -50,6 +50,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITabBarDelegate{
         let TodoCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         TodoCell.textLabel?.text = todo_list[indexPath.row]
         
+        let accesory: UITableViewCell.AccessoryType = todo_check[indexPath.row] ? .checkmark: .none
+        TodoCell.accessoryType = accesory
         
         return TodoCell
     }
@@ -58,6 +60,13 @@ class ViewController: UIViewController,UITableViewDataSource,UITabBarDelegate{
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         todo_list.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .top)
+    }
+    
+    //チェックマーク
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        tableview.deselectRow(at: indexPath, animated: true)
+        todo_check[indexPath.row] = !todo_check[indexPath.row]
+        tableview.reloadRows(at: [indexPath], with: .automatic)
     }
     
     //読み込む
