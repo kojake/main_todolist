@@ -17,12 +17,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xGE-WZ-1lf">
-                                <rect key="frame" x="9" y="55" width="404" height="31"/>
+                                <rect key="frame" x="9" y="55" width="404" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemCyanColor"/>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title=""/>
+                                    <segment title=""/>
                                 </segments>
                                 <color key="selectedSegmentTintColor" systemColor="systemPinkColor"/>
                             </segmentedControl>

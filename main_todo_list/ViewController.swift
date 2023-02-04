@@ -21,6 +21,10 @@ class ViewController: UIViewController,UITableViewDataSource{
             todo_list = [String]()
         }
         
+        for(index, name) in segmentnames.enumerated() {
+            segment.insertSegment(withTitle: name, at: index, animated: false)
+        }
+        
         //ショートカットを読み込む
         if let segmentnames_obj = UserDefaults.standard.object(forKey: "segment_key") as? [String] {
             segmentnames = segmentnames_obj
@@ -32,6 +36,10 @@ class ViewController: UIViewController,UITableViewDataSource{
         } else {
             segmentnames = [String]()
         }
+        
+        //segment.removeAllSegments()
+        
+       
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
