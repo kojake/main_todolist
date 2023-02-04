@@ -9,7 +9,7 @@ import UIKit
 
 var todo_list = [String]()
 
-var segmentnames = ["1","2"]
+var segmentnames = [""]
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

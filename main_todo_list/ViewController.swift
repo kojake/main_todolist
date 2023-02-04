@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITableViewDataSource{
+class ViewController: UIViewController,UITableViewDataSource,UITabBarDelegate{
     @IBOutlet weak var segment: UISegmentedControl!
     @IBOutlet weak var tableview: UITableView!
     
@@ -36,10 +36,6 @@ class ViewController: UIViewController,UITableViewDataSource{
         } else {
             segmentnames = [String]()
         }
-        
-        //segment.removeAllSegments()
-        
-       
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,4 +59,10 @@ class ViewController: UIViewController,UITableViewDataSource{
         todo_list.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .top)
     }
+    
+    //読み込む
+    @IBAction func load_button(_ sender: Any) {
+        tableview.reloadData()
+    }
+    
 }

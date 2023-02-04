@@ -49,6 +49,7 @@ class trash_shortcut_ViewController: UIViewController, UITableViewDataSource{
     
     //読み込む
     @IBAction func load(_ sender: Any) {
+        print(segmentnames)
         if let segmentnames_obj = UserDefaults.standard.object(forKey: "segment_key") as? [String] {
             load_label.text = "ショートカットはあります"
         } else {
