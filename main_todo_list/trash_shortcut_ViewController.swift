@@ -7,11 +7,22 @@
 
 import UIKit
 
-class trash_shortcut_ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class trash_shortcut_ViewController: UIViewController, UITableViewDataSource{
+    
+    //ショートカット削除用のtableview
     @IBOutlet weak var trash_event_tableview: UITableView!
+    //loadlabel
+    @IBOutlet weak var load_label: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //ショートカットを読み込む
+        if let segmentnames_obj = UserDefaults.standard.object(forKey: "segment_key") as? [String] {
+            segmentnames = segmentnames_obj
+        } else {
+            segmentnames = [String]()
+        }
         print(segmentnames)
     }
 
@@ -35,5 +46,13 @@ class trash_shortcut_ViewController: UIViewController, UITableViewDataSource, UI
         segmentnames.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .top)
     }
-
+    
+    //読み込む
+    @IBAction func load(_ sender: Any) {
+        if let segmentnames_obj = UserDefaults.standard.object(forKey: "segment_key") as? [String] {
+            load_label.text = "ショートカットはあります"
+        } else {
+            load_label.text = "ショートカットはありません"
+        }
+    }
 }
