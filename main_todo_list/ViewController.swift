@@ -51,11 +51,8 @@ class ViewController: UIViewController,UITableViewDataSource{
     }
     
     //セルの消去
-    
-    @IBAction func event_trash_button(_ sender: Any) {
-        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-            todo_list.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .top)
-        }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        todo_list.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .top)
     }
 }

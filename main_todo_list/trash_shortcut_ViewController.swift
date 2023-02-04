@@ -30,5 +30,10 @@ class trash_shortcut_ViewController: UIViewController, UITableViewDataSource, UI
         return trash_event_cell
     }
     
+    //セルの消去
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        segmentnames.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .top)
+    }
 
 }
