@@ -13,12 +13,13 @@ class ViewController: UIViewController,UITableViewDataSource,UITabBarDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //予定を読み込む
         if let todo_list_obj = UserDefaults.standard.object(forKey: "todo_list_key") as? [String] {
             todo_list = todo_list_obj
+            todo_check = Array(repeating: false, count: todo_list.count)
         } else {
             todo_list = [String]()
+            todo_check = [Bool]()
         }
         
         for(index, name) in segmentnames.enumerated() {
@@ -67,7 +68,13 @@ class ViewController: UIViewController,UITableViewDataSource,UITabBarDelegate{
         tableview.deselectRow(at: indexPath, animated: true)
         todo_check[indexPath.row] = !todo_check[indexPath.row]
         tableview.reloadRows(at: [indexPath], with: .automatic)
+        
+        let cell = tableView.cellForRow(at: indexPath)
+        let accesory: UITableViewCell.AccessoryType = todo_check[indexPath.row] ? .checkmark: .none
+        cell?.accessoryType = accesory
+        
     }
+    
     
     //読み込む
     @IBAction func load_button(_ sender: Any) {
