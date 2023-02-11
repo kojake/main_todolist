@@ -13,6 +13,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITabBarDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewUserDefaults()
         //予定を読み込む
         if let todo_list_obj = UserDefaults.standard.object(forKey: "todo_list_key") as? [String] {
             todo_list = todo_list_obj
@@ -59,10 +61,15 @@ class ViewController: UIViewController,UITableViewDataSource,UITabBarDelegate{
     }
     
     //セルの消去
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        todo_list.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .top)
-    }
+        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            todo_list.remove(at: indexPath.row)
+            todo_check.remove(at: indexPath.row)
+            UserDefaults.standard.set(todo_list, forKey: "todo_list_key")
+            UserDefaults.standard.set(todo_check, forKey: "todo_check_key")
+            UserDefaults.standard.synchronize()
+            tableView.deleteRows(at: [indexPath], with: .top)
+        }
+
     
     //チェックマーク
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
@@ -78,6 +85,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITabBarDelegate{
     //読み込む
     @IBAction func load_button(_ sender: Any) {
         tableview.reloadData()
+        viewUserDefaults()
     }
     
     
@@ -104,7 +112,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITabBarDelegate{
     func add_event(title: String) {
         todo_list.append(title)
         todo_check.append(false)
-        UserDefaults.standard.set(title, forKey: "todo_list_key")
+        UserDefaults.standard.set(todo_list, forKey: "todo_list_key")
         UserDefaults.standard.synchronize()
         print("保存が成功しました。")
 
@@ -115,6 +123,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITabBarDelegate{
         self.present(alert, animated: true, completion: nil)
         
     }
+    
+    
     
     //ショートカットを追加
     @IBAction func add_shortcut_button(_ sender: Any) {
@@ -148,6 +158,15 @@ class ViewController: UIViewController,UITableViewDataSource,UITabBarDelegate{
         
         self.present(alert, animated: true, completion: nil)
     }
-    
+    func viewUserDefaults() {
+        
+        let defaults = UserDefaults.standard
+
+        if let data = defaults.string(forKey: "todo_list_key") {
+            print(data)
+        } else {
+            print("No data found")
+        }
+    }
     
 }
