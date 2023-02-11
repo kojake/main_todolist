@@ -28,19 +28,7 @@ class add_shortcut_ViewController: UIViewController {
         short_cut_text_filed.inputAccessoryView = toolBar
     }
     
-    @IBAction func add_button(_ sender: Any) {
-        let add_short_cut = String(short_cut_text_filed.text!)
-        segmentnames.append(add_short_cut)
-        UserDefaults.standard.set(add_short_cut, forKey: "segment_key")
-        UserDefaults.standard.synchronize()
-        print("保存が成功しました。")
-        
-        //追加されたアラートを表示する
-        let alert = UIAlertController(title: "追加", message: ("入力された" + "[" + add_short_cut + "]" + "は追加されました"), preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        
-        self.present(alert, animated: true, completion: nil)
-    }
+
     
     //キーボードを閉じる
     @objc func commitButtonTappend(){

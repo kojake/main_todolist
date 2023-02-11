@@ -37,6 +37,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITabBarDelegate{
         } else {
             segmentnames = [String]()
         }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -72,13 +73,81 @@ class ViewController: UIViewController,UITableViewDataSource,UITabBarDelegate{
         let cell = tableView.cellForRow(at: indexPath)
         let accesory: UITableViewCell.AccessoryType = todo_check[indexPath.row] ? .checkmark: .none
         cell?.accessoryType = accesory
-        
     }
-    
     
     //読み込む
     @IBAction func load_button(_ sender: Any) {
         tableview.reloadData()
     }
+    
+    
+    //予定を追加
+    @IBAction func add_memo(_ sender: Any) {
+        let alert = UIAlertController(title: "追加する内容", message: "TodoListに新しい内容を追加します。", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: nil)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(_) in
+            if let title = alert.textFields?[0].text
+            {
+                if title == ""{
+                    let al = UIAlertController(title: "エラー", message: "テキストを入力してください", preferredStyle: .alert)
+                    al.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(al, animated: true, completion: nil)
+                }else{
+                    self.add_event(title: title)
+                }
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    //テキストを追加する
+    func add_event(title: String) {
+        todo_list.append(title)
+        todo_check.append(false)
+        UserDefaults.standard.set(title, forKey: "todo_list_key")
+        UserDefaults.standard.synchronize()
+        print("保存が成功しました。")
+
+        //追加されたアラートを表示する
+        let alert = UIAlertController(title: "追加", message: ("入力された" + title + "は追加されました"), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    //ショートカットを追加
+    @IBAction func add_shortcut_button(_ sender: Any) {
+        let alert = UIAlertController(title: "追加する内容", message: "ショートカットに新しい内容を追加します。", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: nil)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {(_) in
+            if let title = alert.textFields?[0].text
+            {
+                if title == ""{
+                    let al = UIAlertController(title: "エラー", message: "テキストを入力してください", preferredStyle: .alert)
+                    al.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(al, animated: true, completion: nil)
+                }else{
+                    self.add_shortcut(title: title)
+                }
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func add_shortcut(title: String) {
+        segmentnames.append(title)
+        UserDefaults.standard.set(title, forKey: "segment_key")
+        UserDefaults.standard.synchronize()
+        print("保存が成功しました。")
+        
+        //追加されたアラートを表示する
+        let alert = UIAlertController(title: "追加", message: ("入力された" + "[" + title + "]" + "は追加されました"), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
 }
