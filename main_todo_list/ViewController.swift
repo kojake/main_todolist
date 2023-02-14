@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITableViewDataSource,UITabBarDelegate{
+class ViewController: UIViewController,UITableViewDataSource{
     @IBOutlet weak var segment: UISegmentedControl!
     @IBOutlet weak var tableview: UITableView!
     
@@ -142,7 +142,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITabBarDelegate{
     
     func add_shortcut(title: String) {
         segmentnames.append(title)
-        UserDefaults.standard.set(title, forKey: "segment_key")
+        UserDefaults.standard.set(segmentnames, forKey: "segment_key")
         UserDefaults.standard.synchronize()
         segment.selectedSegmentIndex = 0
         //更新
@@ -159,6 +159,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITabBarDelegate{
         
         self.present(alert, animated: true, completion: nil)
     }
+    
+    //データ有無
     func viewUserDefaults() {
         
         let defaults = UserDefaults.standard
@@ -169,5 +171,4 @@ class ViewController: UIViewController,UITableViewDataSource,UITabBarDelegate{
             print("No data found")
         }
     }
-    
 }

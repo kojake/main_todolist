@@ -23,7 +23,7 @@ class trash_shortcut_ViewController: UIViewController, UITableViewDataSource{
         }
         print(segmentnames)
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return segmentnames.count
     }
@@ -42,13 +42,7 @@ class trash_shortcut_ViewController: UIViewController, UITableViewDataSource{
     //セルの消去
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         segmentnames.remove(at: indexPath.row)
+        UserDefaults.standard.set(segmentnames, forKey: "segment_key")
         tableView.deleteRows(at: [indexPath], with: .top)
     }
-    
-    //読み込む
-    @IBAction func load(_ sender: Any) {
-            trash_event_tableview.reloadData()
-            viewDidLoad()
-            print(segmentnames)
-        }
-    }
+}
