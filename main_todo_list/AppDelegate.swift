@@ -8,7 +8,7 @@
 import UIKit
 
 var todo_list = [String]()
-var segmentnames = ["1"]
+var segmentnames = [String]()
 var todo_check = [Bool]()
 
 @main

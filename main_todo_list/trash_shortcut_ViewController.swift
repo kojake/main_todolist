@@ -49,5 +49,6 @@ class trash_shortcut_ViewController: UIViewController, UITableViewDataSource{
     @IBAction func load(_ sender: Any) {
             trash_event_tableview.reloadData()
             viewDidLoad()
+            print(segmentnames)
         }
     }

@@ -120,8 +120,6 @@ class ViewController: UIViewController,UITableViewDataSource,UITabBarDelegate{
         
     }
     
-    
-    
     //ショートカットを追加
     @IBAction func add_shortcut_button(_ sender: Any) {
         let alert = UIAlertController(title: "追加する内容", message: "ショートカットに新しい内容を追加します。", preferredStyle: .alert)
@@ -146,8 +144,12 @@ class ViewController: UIViewController,UITableViewDataSource,UITabBarDelegate{
         segmentnames.append(title)
         UserDefaults.standard.set(title, forKey: "segment_key")
         UserDefaults.standard.synchronize()
-        segment.selectedSegmentIndex = 1
+        segment.selectedSegmentIndex = 0
         //更新
+        segment.removeAllSegments()
+        for (index, name) in segmentnames.enumerated() {
+            segment.insertSegment(withTitle: name, at: index, animated: false)
+        }
         tableview.reloadData()
         viewUserDefaults()
         
