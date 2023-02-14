@@ -11,8 +11,6 @@ class trash_shortcut_ViewController: UIViewController, UITableViewDataSource{
     
     //ショートカット削除用のtableview
     @IBOutlet weak var trash_event_tableview: UITableView!
-    //loadlabel
-    @IBOutlet weak var load_label: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,11 +47,7 @@ class trash_shortcut_ViewController: UIViewController, UITableViewDataSource{
     
     //読み込む
     @IBAction func load(_ sender: Any) {
-        print(segmentnames)
-        if let segmentnames_obj = UserDefaults.standard.object(forKey: "segment_key") as? [String] {
-            load_label.text = "ショートカットはあります"
-        } else {
-            load_label.text = "ショートカットはありません"
+            trash_event_tableview.reloadData()
+            viewDidLoad()
         }
     }
-}

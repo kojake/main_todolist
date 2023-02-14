@@ -82,13 +82,6 @@ class ViewController: UIViewController,UITableViewDataSource,UITabBarDelegate{
         cell?.accessoryType = accesory
     }
     
-    //読み込む
-    @IBAction func load_button(_ sender: Any) {
-        tableview.reloadData()
-        viewUserDefaults()
-    }
-    
-    
     //予定を追加
     @IBAction func add_memo(_ sender: Any) {
         let alert = UIAlertController(title: "追加する内容", message: "TodoListに新しい内容を追加します。", preferredStyle: .alert)
@@ -114,7 +107,10 @@ class ViewController: UIViewController,UITableViewDataSource,UITabBarDelegate{
         todo_check.append(false)
         UserDefaults.standard.set(todo_list, forKey: "todo_list_key")
         UserDefaults.standard.synchronize()
-        print("保存が成功しました。")
+        
+        //更新
+        tableview.reloadData()
+        viewUserDefaults()
 
         //追加されたアラートを表示する
         let alert = UIAlertController(title: "追加", message: ("入力された" + title + "は追加されました"), preferredStyle: .alert)
@@ -150,7 +146,10 @@ class ViewController: UIViewController,UITableViewDataSource,UITabBarDelegate{
         segmentnames.append(title)
         UserDefaults.standard.set(title, forKey: "segment_key")
         UserDefaults.standard.synchronize()
-        print("保存が成功しました。")
+        segment.selectedSegmentIndex = 1
+        //更新
+        tableview.reloadData()
+        viewUserDefaults()
         
         //追加されたアラートを表示する
         let alert = UIAlertController(title: "追加", message: ("入力された" + "[" + title + "]" + "は追加されました"), preferredStyle: .alert)
