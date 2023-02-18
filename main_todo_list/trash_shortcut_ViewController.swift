@@ -27,25 +27,14 @@ class trash_shortcut_ViewController: UIViewController, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let trash_event_cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        trash_event_cell.textLabel?.text = todo_list_segmentnames_list[""]?[indexPath.row]
+        trash_event_cell.textLabel?.text = segmentnames_key[indexPath.row]
         
         return trash_event_cell
     }
     
     //セルの消去
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        todo_list_segmentnames_list[""]?.remove(at: indexPath.row)
+        todo_list_segmentnames_list.removeValue(forKey: "key1")
         tableView.deleteRows(at: [indexPath], with: .top)
     }
-    
-    //tabbarが押されたら
-//    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-//        switch item.tag {
-//        case 1:
-//            trash_event_tableview.reloadData()
-//            viewDidLoad()
-//        default:
-//            break
-//        }
-//    }
 }

@@ -14,6 +14,12 @@ class ViewController: UIViewController,UITableViewDataSource{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //segmentedcontrol
+        segment.removeAllSegments()
+        for (index, name) in segmentnames_key.enumerated() {
+            segment.insertSegment(withTitle: name, at: index, animated: false)
+        }
+        
         viewUserDefaults()
     }
     
@@ -38,8 +44,7 @@ class ViewController: UIViewController,UITableViewDataSource{
     //セルの消去
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         todo_list_segmentnames_list["key1"]?.remove(at: indexPath.row)
-//        todo_check.remove(at: indexPath.row)
-//        UserDefaults.standard.set(todo_check, forKey: "todo_check_key")
+        todo_check.remove(at: indexPath.row)
         UserDefaults.standard.synchronize()
         tableView.deleteRows(at: [indexPath], with: .top)
     }
@@ -48,12 +53,12 @@ class ViewController: UIViewController,UITableViewDataSource{
     //チェックマーク
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         tableview.deselectRow(at: indexPath, animated: true)
-//        todo_check[indexPath.row] = !todo_check[indexPath.row]
+        todo_check[indexPath.row] = !todo_check[indexPath.row]
         tableview.reloadRows(at: [indexPath], with: .automatic)
         
         let cell = tableView.cellForRow(at: indexPath)
-//        let accesory: UITableViewCell.AccessoryType = todo_check[indexPath.row] ? .checkmark: .none
-//        cell?.accessoryType = accesory
+        let accesory: UITableViewCell.AccessoryType = todo_check[indexPath.row] ? .checkmark: .none
+        cell?.accessoryType = accesory
     }
     
     //予定を追加
@@ -78,7 +83,7 @@ class ViewController: UIViewController,UITableViewDataSource{
     //テキストを追加する
     func add_event(title: String) {
         todo_list_segmentnames_list["key1"]?.append(title)
-//        todo_check.append(false)
+        todo_check.append(false)
         UserDefaults.standard.synchronize()
         
         //更新
@@ -140,7 +145,7 @@ class ViewController: UIViewController,UITableViewDataSource{
 //        
 //        switch segment.selectedSegmentIndex {
 //        case 0:
-//            rowsToDisplay = games
+//            
 //        default:
 //            rowsToDisplay = devices
 //        }
@@ -159,16 +164,4 @@ class ViewController: UIViewController,UITableViewDataSource{
             print("No data found")
         }
     }
-    
-    
-    //tabbarが押されたら
-//    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-//        switch item.tag {
-//        case 0:
-//            tableview.reloadData()
-//            viewDidLoad()
-//        default:
-//            break
-//        }
-//    }
 }
