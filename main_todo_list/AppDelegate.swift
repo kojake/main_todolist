@@ -7,9 +7,14 @@
 
 import UIKit
 
-var todo_list = [String]()
-var segmentnames = [String]()
-var todo_check = [Bool]()
+//var todo_check = [Bool]()
+var todo_list_segmentnames_list:[String:[String]] = [
+    "key1":[
+        "あいうえお"
+    ]
+]
+var todo_list_segmentnames_list_array = Array(todo_list_segmentnames_list.values)
+var segmentnames_key = todo_list_segmentnames_list.keys
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

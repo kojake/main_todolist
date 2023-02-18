@@ -15,17 +15,10 @@ class trash_shortcut_ViewController: UIViewController, UITableViewDataSource{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //ショートカットを読み込む
-        if let segmentnames_obj = UserDefaults.standard.object(forKey: "segment_key") as? [String] {
-            segmentnames = segmentnames_obj
-        } else {
-            segmentnames = [String]()
-        }
-        print(segmentnames)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return segmentnames.count
+        return segmentnames_key.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -34,15 +27,25 @@ class trash_shortcut_ViewController: UIViewController, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let trash_event_cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        trash_event_cell.textLabel?.text = segmentnames[indexPath.row]
+        trash_event_cell.textLabel?.text = todo_list_segmentnames_list[""]?[indexPath.row]
         
         return trash_event_cell
     }
     
     //セルの消去
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        segmentnames.remove(at: indexPath.row)
-        UserDefaults.standard.set(segmentnames, forKey: "segment_key")
+        todo_list_segmentnames_list[""]?.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .top)
     }
+    
+    //tabbarが押されたら
+//    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+//        switch item.tag {
+//        case 1:
+//            trash_event_tableview.reloadData()
+//            viewDidLoad()
+//        default:
+//            break
+//        }
+//    }
 }
