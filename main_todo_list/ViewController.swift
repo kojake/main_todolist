@@ -19,6 +19,7 @@ class ViewController: UIViewController,UITableViewDataSource{
         for (index, name) in segmentnames_key.enumerated() {
             segment.insertSegment(withTitle: name, at: index, animated: false)
         }
+        print(segmentnames_key)
         
         viewUserDefaults()
     }
@@ -122,7 +123,7 @@ class ViewController: UIViewController,UITableViewDataSource{
         //外部から情報を追加する
         todo_list_segmentnames_list_array[0].append(title)
         //新しい値をtodo_list_segmentnames_listに代入する
-        todo_list_segmentnames_list["key1"] = todo_list_segmentnames_list_array[0]
+        todo_list_segmentnames_list[title] = todo_list_segmentnames_list_array[0]
         segment.selectedSegmentIndex = 0
         //更新
         segment.removeAllSegments()
@@ -130,7 +131,9 @@ class ViewController: UIViewController,UITableViewDataSource{
             segment.insertSegment(withTitle: name, at: index, animated: false)
         }
         tableview.reloadData()
-        viewUserDefaults()
+        viewDidLoad()
+        
+        print(todo_list_segmentnames_list)
         
         //追加されたアラートを表示する
         let alert = UIAlertController(title: "追加", message: ("入力された" + "[" + title + "]" + "は追加されました"), preferredStyle: .alert)
